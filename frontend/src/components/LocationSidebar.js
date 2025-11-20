@@ -61,9 +61,9 @@ export function LocationSidebar({
                   <span className="text-gray-900 text-sm">{location.convenienceScore}점</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-600 text-sm">접근성</span>
-                  <span className="text-gray-900 text-sm">{location.accessibilityScore}점</span>
-                </div>
+                <span className="text-gray-600 text-sm">접근성</span>
+                <span className="text-gray-900 text-sm">{location.accessibilityScore}점</span>
+              </div>
               </div>
 
               <button

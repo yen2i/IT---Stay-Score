@@ -31,7 +31,7 @@ export function ConvenienceScore({ score, facilities, onFacilitySelect }) {
     "convenience_store",
     "pharmacy",
     "hospital",
-    "police_station",
+    "police",
   ];
 
   return (
@@ -70,7 +70,24 @@ export function ConvenienceScore({ score, facilities, onFacilitySelect }) {
         </div>
 
         <ResponsiveContainer width="100%" height={240}>
-          <BarChart data={chartData}>
+          <BarChart data={chartData}
+            onClick={(state) => {
+              if (!state || !state.activeLabel) return;
+
+              const label = state.activeLabel;
+
+              const mapping = {
+                "편의점": "convenience_store",
+                "약국": "pharmacy",
+                "병원": "hospital",
+                "경찰서": "police",
+              };
+
+              const type = mapping[label];
+              if (type && onFacilitySelect) {
+                onFacilitySelect(type);   // ★ 여기서 SafetyHeatMap에게 신호 보냄
+              }
+            }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
             
             <XAxis 
@@ -97,10 +114,9 @@ export function ConvenienceScore({ score, facilities, onFacilitySelect }) {
               dataKey="count"
               fill="#10b981"
               radius={[8, 8, 0, 0]}
-              onClick={(entry) => {
-                if (onFacilitySelect) onFacilitySelect(entry.name);
-              }}
+              
             />
+            
           </BarChart>
         </ResponsiveContainer>
       </div>
