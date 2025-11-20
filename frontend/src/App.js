@@ -141,8 +141,11 @@ export default function App() {
         nearestStation,
 
         // MVP: 접근성은 일단 제외 (원하면 추가)
-        accessibilityScore: null,
+        accessibilityScore: data.scores.cityAccess.score,
         accessibilityTime: null,
+
+        // ⭐ 접근성
+        cityAccess: data.scores.cityAccess,
       };
 
       setCurrentSearchResult(finalObj);
@@ -302,9 +305,11 @@ export default function App() {
                       grade={displayLocation.safetyGrade}
                     />
                     <AccessibilityScore
-                      score={displayLocation.accessibilityScore}
-                      time={displayLocation.accessibilityTime}
+                      score={displayLocation.cityAccess?.score}
+                      distanceKm={displayLocation.cityAccess?.distanceKm}
+                      landmark={displayLocation.cityAccess?.landmark}
                     />
+
                   </div>
 
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
