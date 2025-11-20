@@ -1,5 +1,6 @@
 import { MapPin } from 'lucide-react';
 import { SearchBar } from './SearchBar';
+import { UpdatedRegions } from './UpdatedRegions';
 
 export function Hero({ onSearch, isLoading }) {
   return (
@@ -21,25 +22,7 @@ export function Hero({ onSearch, isLoading }) {
       <div className="w-full max-w-2xl">
         <SearchBar onSearch={onSearch} isLoading={isLoading} />
       </div>
-
-      <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl">
-        <div className="p-4 bg-white/60 backdrop-blur-sm rounded-lg border border-gray-200">
-          <div className="text-blue-600 mb-2">🛡️</div>
-          <div className="text-gray-900">안전성 분석</div>
-        </div>
-        <div className="p-4 bg-white/60 backdrop-blur-sm rounded-lg border border-gray-200">
-          <div className="text-purple-600 mb-2">🏙️</div>
-          <div className="text-gray-900">도심 접근성</div>
-        </div>
-        <div className="p-4 bg-white/60 backdrop-blur-sm rounded-lg border border-gray-200">
-          <div className="text-green-600 mb-2">🏪</div>
-          <div className="text-gray-900">편의성 지수</div>
-        </div>
-        <div className="p-4 bg-white/60 backdrop-blur-sm rounded-lg border border-gray-200">
-          <div className="text-orange-600 mb-2">🚇</div>
-          <div className="text-gray-900">대중교통</div>
-        </div>
-      </div>
+      <UpdatedRegions/>
     </div>
   );
 }
